@@ -1,0 +1,101 @@
+.login-bar {
+  background-color: var(--navbar-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand-icon {
+  font-size: 28px;
+  color: var(--primary);
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+.brand-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.login-label {
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.login-input {
+  width: 160px;
+  height: 28px;
+  font-size: 13px;
+  padding: 2px 8px;
+}
+
+.login-error {
+  color: #cc0000;
+  font-size: 12px;
+}
+
+.welcome-text {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.main-nav {
+  background-color: var(--bg-secondary);
+  border-bottom: 2px solid var(--primary);
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li a {
+    color: var(--text);
+    font-size: 13px;
+    text-decoration: none;
+    padding: 4px 8px;
+
+    &:hover, &.active-link {
+      color: var(--primary);
+      text-decoration: none;
+    }
+  }
+
+  .sep {
+    color: var(--text-muted);
+    font-size: 11px;
+  }
+}
+
+.search-input {
+  width: 180px;
+  height: 28px;
+  font-size: 13px;
+  padding: 2px 8px;
+}
+
+.cart-btn {
+  position: relative;
+  white-space: nowrap;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #e74c3c;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 10px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}

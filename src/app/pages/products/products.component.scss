@@ -1,0 +1,56 @@
+.filter-panel {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.filter-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.filter-item {
+  padding: 6px 8px;
+  font-size: 13px;
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.15s;
+
+  &:hover { background: var(--bg-secondary); color: var(--primary); }
+  &.active { background: var(--primary); color: #fff; }
+}
+
+.sort-bar {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+
+.results-count {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.sort-label {
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.sort-select {
+  width: auto;
+  min-width: 160px;
+  font-size: 13px;
+  background-color: var(--input-bg);
+  color: var(--text);
+  border-color: var(--input-border);
+}
+
+.no-results { color: var(--text-muted); }

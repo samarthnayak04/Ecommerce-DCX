@@ -1,0 +1,50 @@
+.login-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  color: var(--text);
+}
+
+.welcome-banner {
+  background: linear-gradient(135deg, #337ab7 0%, #2e6da4 100%);
+  color: #fff;
+  border-radius: 8px;
+}
+
+.nav-tabs {
+  border-color: var(--border);
+  .nav-link {
+    color: var(--text-muted);
+    border-color: transparent;
+    font-size: 14px;
+    &:hover { color: var(--primary); }
+    &.active {
+      color: var(--primary);
+      background: var(--card-bg);
+      border-color: var(--border) var(--border) var(--card-bg);
+    }
+  }
+}
+
+.account-section {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.section-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+.table {
+  color: var(--text);
+  th { color: var(--text-muted); font-size: 12px; text-transform: uppercase; }
+  td { font-size: 13px; vertical-align: middle; }
+}

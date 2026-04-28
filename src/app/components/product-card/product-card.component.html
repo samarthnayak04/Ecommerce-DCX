@@ -1,0 +1,28 @@
+<div class="product-card">
+  <div class="product-img-wrap">
+    <img [src]="product.image" [alt]="product.name" class="product-img"
+         (error)="onImageError($event)" />
+  </div>
+
+  <div class="product-info">
+    <div class="d-flex justify-content-between align-items-start">
+      <h6 class="product-name">{{ product.name }}</h6>
+      <span class="product-price">${{ product.price | number:'1.2-2' }}</span>
+    </div>
+
+    <p class="product-desc">{{ product.description }}</p>
+
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="stars-wrap">
+        @for (star of stars; track $index) {
+          <i class="fa-star" [class.fas]="$index < product.rating" [class.far]="$index >= product.rating"></i>
+        }
+        <span class="review-count">{{ product.reviews }} Reviews</span>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-sm add-btn mt-2" (click)="onAddToCart()">
+      Add to Cart
+    </button>
+  </div>
+</div>

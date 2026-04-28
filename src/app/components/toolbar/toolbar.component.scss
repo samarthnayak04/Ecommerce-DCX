@@ -1,0 +1,39 @@
+.toolbar-strip {
+  background-color: var(--toolbar-bg);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+
+.toolbar-btn {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 2px 8px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 12px;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--primary);
+    border-color: var(--border);
+  }
+
+  &.active {
+    background-color: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+  }
+}
+
+.toolbar-sep { color: var(--border); }
+.font-sm-btn { font-size: 11px; font-weight: bold; }
+.font-lg-btn { font-size: 15px; font-weight: bold; }
+
+.theme-btn.dark {
+  background-color: #444;
+  color: #ccc;
+  &.active { background-color: #111; color: #fff; }
+}
+
+.icon-btn { padding: 2px 6px; }

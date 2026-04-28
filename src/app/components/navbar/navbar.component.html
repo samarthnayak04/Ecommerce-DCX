@@ -1,0 +1,72 @@
+<!-- Login Header Bar -->
+<div class="login-bar">
+  <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap gap-2 py-2">
+
+    <!-- Brand -->
+    <div class="brand d-flex align-items-center gap-2">
+      <i class="fas fa-tag brand-icon"></i>
+      <div>
+        <div class="brand-name">DCX-App Store</div>
+        <div class="brand-sub">Bootstrap Ecommerce Template</div>
+      </div>
+    </div>
+
+    <!-- Login form or user info -->
+    <div class="d-flex align-items-center gap-2 flex-wrap">
+      @if (!currentUser) {
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <label class="login-label">Email</label>
+          <input type="email" class="form-control login-input" placeholder="john@mail.it"
+                 [(ngModel)]="email" (keyup.enter)="onLogin()" />
+          <label class="login-label">Password</label>
+          <input type="password" class="form-control login-input" placeholder="••••••"
+                 [(ngModel)]="password" (keyup.enter)="onLogin()" />
+          <button class="btn btn-primary btn-sm" (click)="onLogin()">Login</button>
+        </div>
+        @if (loginError) {
+          <span class="login-error ms-2">{{ loginError }}</span>
+        }
+      } @else {
+        <div class="d-flex align-items-center gap-2">
+          <span class="welcome-text">Welcome, <strong>{{ currentUser.name }}</strong></span>
+          <button class="btn btn-outline-secondary btn-sm" (click)="onLogout()">Logout</button>
+        </div>
+      }
+    </div>
+
+  </div>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="main-nav">
+  <div class="container-fluid d-flex align-items-center gap-2 flex-wrap py-1">
+
+    <!-- Nav links -->
+    <ul class="nav-links d-flex align-items-center gap-1 me-3">
+      <li><a routerLink="/home" routerLinkActive="active-link">Home</a></li>
+      <li class="sep">»</li>
+      <li><a routerLink="/products" routerLinkActive="active-link">Products</a></li>
+      <li class="sep">»</li>
+      <li><a routerLink="/account" routerLinkActive="active-link">My Account</a></li>
+    </ul>
+
+    <!-- Spacer -->
+    <div class="flex-grow-1"></div>
+
+    <!-- Search -->
+    <div class="d-flex align-items-center gap-1">
+      <input type="text" class="form-control search-input" placeholder="Search..."
+             [(ngModel)]="searchQuery" (keyup.enter)="onSearch()" />
+      <button class="btn btn-primary btn-sm" (click)="onSearch()">Search</button>
+    </div>
+
+    <!-- Cart -->
+    <button class="btn btn-primary btn-sm cart-btn" (click)="openCart()">
+      <i class="fas fa-shopping-cart"></i> Cart
+      @if (cartCount > 0) {
+        <span class="cart-badge">{{ cartCount }}</span>
+      }
+    </button>
+
+  </div>
+</nav>

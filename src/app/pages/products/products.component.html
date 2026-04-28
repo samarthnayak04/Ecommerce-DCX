@@ -1,0 +1,56 @@
+<div class="container-fluid py-3">
+  <div class="row">
+
+    <!-- Sidebar Filters -->
+    <div class="col-md-2 col-sm-12 mb-3">
+      <div class="filter-panel">
+        <h6 class="filter-title">Categories</h6>
+        @for (cat of categories; track cat) {
+          <div class="filter-item" [class.active]="selectedCategory === cat" (click)="filterByCategory(cat)">
+            {{ cat }}
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="col-md-10 col-sm-12">
+
+      <!-- Sort bar -->
+      <div class="d-flex justify-content-between align-items-center mb-3 sort-bar">
+        <span class="results-count">
+          Showing {{ filteredProducts.length }} product{{ filteredProducts.length !== 1 ? 's' : '' }}
+          @if (selectedCategory !== 'All') {
+            in <strong>{{ selectedCategory }}</strong>
+          }
+        </span>
+        <div class="d-flex align-items-center gap-2">
+          <label class="mb-0 sort-label">Sort by:</label>
+          <select class="form-select form-select-sm sort-select" [(ngModel)]="sortBy" (ngModelChange)="onSortChange()">
+            <option value="default">Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+            <option value="reviews">Most Reviews</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      @if (filteredProducts.length === 0) {
+        <div class="no-results text-center py-5">
+          <i class="fas fa-search fa-3x mb-3" style="color: var(--border)"></i>
+          <p class="text-muted">No products found. Try a different search or category.</p>
+        </div>
+      } @else {
+        <div class="row g-3">
+          @for (product of filteredProducts; track product.id) {
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+              <app-product-card [product]="product" (addToCart)="addToCart($event)" />
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>

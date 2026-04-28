@@ -1,0 +1,79 @@
+/* DCX-App Store Global Styles */
+
+:root {
+  --primary: #337ab7;
+  --primary-dark: #2e6da4;
+  --bg: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text: #333333;
+  --text-muted: #777777;
+  --border: #dddddd;
+  --card-bg: #ffffff;
+  --navbar-bg: #f8f9fa;
+  --toolbar-bg: #e9ecef;
+  --footer-bg: #f1f1f1;
+  --input-bg: #ffffff;
+  --input-border: #cccccc;
+}
+
+body.dark-theme {
+  --bg: #1a1a2e;
+  --bg-secondary: #16213e;
+  --text: #e0e0e0;
+  --text-muted: #aaaaaa;
+  --border: #444444;
+  --card-bg: #0f3460;
+  --navbar-bg: #16213e;
+  --toolbar-bg: #0d1117;
+  --footer-bg: #0d1117;
+  --input-bg: #1e2a3a;
+  --input-border: #555555;
+}
+
+body.grayscale {
+  filter: grayscale(100%);
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s, filter 0.3s;
+}
+
+body.font-small { font-size: 13px; }
+body.font-normal { font-size: 15px; }
+body.font-large  { font-size: 18px; }
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.btn-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary-dark) !important;
+}
+.btn-primary:hover {
+  background-color: var(--primary-dark) !important;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.form-control {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text);
+}
+.form-control:focus {
+  background-color: var(--input-bg);
+  color: var(--text);
+}
+
+footer {
+  background-color: var(--footer-bg);
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}

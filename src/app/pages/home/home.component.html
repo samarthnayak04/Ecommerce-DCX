@@ -1,0 +1,46 @@
+<!-- Hero Banner -->
+<div class="hero-banner">
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-7">
+        <h1 class="hero-title">Welcome to DCX-App Store</h1>
+        <p class="hero-sub">Your one-stop shop for the latest electronics, gadgets, and more. Discover great deals on top brands.</p>
+        <a routerLink="/products" class="btn btn-primary btn-lg me-2">Shop Now</a>
+        <a routerLink="/account" class="btn btn-outline-light btn-lg">My Account</a>
+      </div>
+      <div class="col-md-5 text-center">
+        <i class="fas fa-store hero-icon"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Categories -->
+<div class="container my-5">
+  <h4 class="section-title mb-4">Shop by Category</h4>
+  <div class="row g-3">
+    @for (cat of categories; track cat.name) {
+      <div class="col-6 col-md-3">
+        <div class="category-card text-center" (click)="goToProducts()">
+          <i class="category-icon" [class]="cat.icon"></i>
+          <div class="category-name">{{ cat.name }}</div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+<!-- Featured Products -->
+<div class="container mb-5">
+  <h4 class="section-title mb-4">Featured Products</h4>
+  <div class="row g-3">
+    @for (product of featuredProducts; track product.id) {
+      <div class="col-md-4">
+        <app-product-card [product]="product" (addToCart)="addToCart($event)" />
+      </div>
+    }
+  </div>
+  <div class="text-center mt-4">
+    <a routerLink="/products" class="btn btn-outline-primary">View All Products</a>
+  </div>
+</div>

@@ -1,0 +1,154 @@
+<div class="container py-4">
+
+  @if (!currentUser) {
+    <!-- Not logged in -->
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="login-card">
+          <h4 class="mb-4 text-center"><i class="fas fa-user-circle me-2"></i>My Account</h4>
+          <p class="text-muted text-center mb-4">Please log in to view your account details.</p>
+
+          <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <input type="email" class="form-control" placeholder="john@mail.it"
+                   [(ngModel)]="loginEmail" (keyup.enter)="login()" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="••••••"
+                   [(ngModel)]="loginPassword" (keyup.enter)="login()" />
+          </div>
+          @if (loginError) {
+            <div class="alert alert-danger py-2 small">{{ loginError }}</div>
+          }
+          <button class="btn btn-primary w-100" (click)="login()">Login</button>
+          <hr />
+          <p class="text-center small text-muted">
+            Don't have an account? <a href="#">Register here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  } @else {
+    <!-- Logged in -->
+    <div class="row">
+      <div class="col-12 mb-3">
+        <div class="welcome-banner d-flex align-items-center justify-content-between flex-wrap gap-2 px-4 py-3">
+          <div>
+            <h5 class="mb-1"><i class="fas fa-user-circle me-2"></i>{{ currentUser.name }}</h5>
+            <small class="opacity-75">{{ currentUser.email }}</small>
+          </div>
+          <button class="btn btn-outline-light btn-sm" (click)="logout()">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs mb-4">
+      <li class="nav-item">
+        <button class="nav-link" [class.active]="activeTab === 'profile'" (click)="setTab('profile')">
+          <i class="fas fa-user me-1"></i>Profile
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" [class.active]="activeTab === 'orders'" (click)="setTab('orders')">
+          <i class="fas fa-box me-1"></i>Order History
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" [class.active]="activeTab === 'cart'" (click)="setTab('cart')">
+          <i class="fas fa-shopping-cart me-1"></i>Current Cart
+          @if (cartItems.length > 0) {
+            <span class="badge bg-primary ms-1">{{ cartItems.length }}</span>
+          }
+        </button>
+      </li>
+    </ul>
+
+    <!-- Tab Content -->
+    @if (activeTab === 'profile') {
+      <div class="account-section">
+        <h6 class="section-heading">Personal Information</h6>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" [value]="currentUser.name | titlecase" readonly />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" value="Doe" readonly />
+          </div>
+          <div class="col-md-8">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" [value]="currentUser.email" readonly />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Phone</label>
+            <input type="text" class="form-control" placeholder="+1 555 000 0000" />
+          </div>
+          <div class="col-12">
+            <label class="form-label">Address</label>
+            <input type="text" class="form-control" placeholder="123 Main St, City, State" />
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    }
+
+    @if (activeTab === 'orders') {
+      <div class="account-section">
+        <h6 class="section-heading">Order History</h6>
+        <div class="empty-orders text-center py-4">
+          <i class="fas fa-box-open fa-3x mb-3" style="color: var(--border)"></i>
+          <p class="text-muted">No orders yet. <a routerLink="/products">Start shopping!</a></p>
+        </div>
+      </div>
+    }
+
+    @if (activeTab === 'cart') {
+      <div class="account-section">
+        <h6 class="section-heading">Current Cart</h6>
+        @if (cartItems.length === 0) {
+          <div class="text-center py-4">
+            <i class="fas fa-shopping-cart fa-3x mb-3" style="color: var(--border)"></i>
+            <p class="text-muted">Your cart is empty. <a routerLink="/products">Browse products!</a></p>
+          </div>
+        } @else {
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Qty</th>
+                  <th>Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (item of cartItems; track item.product.id) {
+                  <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>${{ item.product.price | number:'1.2-2' }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>${{ (item.product.price * item.quantity) | number:'1.2-2' }}</td>
+                  </tr>
+                }
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="3"><strong>Total</strong></td>
+                  <td><strong>${{ cartTotal | number:'1.2-2' }}</strong></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <button class="btn btn-primary">Proceed to Checkout</button>
+        }
+      </div>
+    }
+  }
+
+</div>
