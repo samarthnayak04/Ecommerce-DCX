@@ -1,38 +1,25 @@
 <div class="toolbar-strip">
-  <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap gap-2 py-1">
+  <div class="toolbar-inner">
 
-    <!-- Left: Font speed + Grayscale -->
-    <div class="d-flex align-items-center gap-3">
-      <div class="d-flex align-items-center gap-1">
-        <button class="toolbar-btn" [class.active]="currentFont === 'small'" (click)="setFont('small')" title="Small font">
-          <i class="fas fa-text-height" style="font-size:10px"></i> Fast
-        </button>
-        <span class="toolbar-sep">|</span>
-        <button class="toolbar-btn" [class.active]="isGrayscale" (click)="toggleGrayscale()" title="Toggle grayscale">
-          Gray-scale
-        </button>
-      </div>
-
-      <!-- Zoom icons -->
-      <div class="d-flex align-items-center gap-1">
-        <button class="toolbar-btn icon-btn" title="Zoom out"><i class="fas fa-search-minus"></i></button>
-        <button class="toolbar-btn icon-btn" title="Zoom in"><i class="fas fa-search-plus"></i></button>
-      </div>
+    <div class="toolbar-left">
+      <button class="toolbar-btn" [class.active]="isGrayscale" (click)="toggleGrayscale()">
+        <i class="fas fa-circle-half-stroke"></i> Grayscale
+      </button>
+      <span class="toolbar-sep">|</span>
+      <span class="toolbar-label">Text:</span>
+      <button class="toolbar-btn font-sm" [class.active]="currentFont === 'small'" (click)="setFont('small')" title="Small text">A</button>
+      <button class="toolbar-btn font-md" [class.active]="currentFont === 'normal'" (click)="setFont('normal')" title="Normal text">A</button>
+      <button class="toolbar-btn font-lg" [class.active]="currentFont === 'large'" (click)="setFont('large')" title="Large text">A</button>
     </div>
 
-    <!-- Right: Font size + Theme -->
-    <div class="d-flex align-items-center gap-3">
-      <!-- Font size A A -->
-      <div class="d-flex align-items-center gap-1">
-        <button class="toolbar-btn font-sm-btn" [class.active]="currentFont === 'small'" (click)="setFont('small')" title="Small text">A</button>
-        <button class="toolbar-btn font-lg-btn" [class.active]="currentFont === 'large'" (click)="setFont('large')" title="Large text">A</button>
-      </div>
-
-      <!-- Theme toggle -->
-      <div class="d-flex align-items-center gap-1">
-        <button class="toolbar-btn theme-btn" [class.active]="currentTheme === 'light'" (click)="setTheme('light')">Light</button>
-        <button class="toolbar-btn theme-btn dark" [class.active]="currentTheme === 'dark'" (click)="setTheme('dark')">Dark</button>
-      </div>
+    <div class="toolbar-right">
+      <span class="toolbar-label">Theme:</span>
+      <button class="toolbar-btn theme-light" [class.active]="currentTheme === 'light'" (click)="setTheme('light')">
+        <i class="fas fa-sun"></i> Light
+      </button>
+      <button class="toolbar-btn theme-dark" [class.active]="currentTheme === 'dark'" (click)="setTheme('dark')">
+        <i class="fas fa-moon"></i> Dark
+      </button>
     </div>
 
   </div>

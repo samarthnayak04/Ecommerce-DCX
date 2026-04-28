@@ -1,35 +1,46 @@
 <!-- Login Header Bar -->
 <div class="login-bar">
-  <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap gap-2 py-2">
+  <div class="login-inner">
 
     <!-- Brand -->
-    <div class="brand d-flex align-items-center gap-2">
-      <i class="fas fa-tag brand-icon"></i>
-      <div>
-        <div class="brand-name">DCX-App Store</div>
-        <div class="brand-sub">Bootstrap Ecommerce Template</div>
+    <a routerLink="/home" class="brand">
+      <div class="brand-icon-wrap">
+        <i class="fas fa-bolt"></i>
       </div>
-    </div>
+      <div>
+        <div class="brand-name">DCX Store</div>
+        <div class="brand-tagline">Electronics &amp; Gadgets</div>
+      </div>
+    </a>
 
-    <!-- Login form or user info -->
-    <div class="d-flex align-items-center gap-2 flex-wrap">
+    <!-- Login / User -->
+    <div class="auth-zone">
       @if (!currentUser) {
-        <div class="d-flex align-items-center gap-2 flex-wrap">
-          <label class="login-label">Email</label>
-          <input type="email" class="form-control login-input" placeholder="john@mail.it"
-                 [(ngModel)]="email" (keyup.enter)="onLogin()" />
-          <label class="login-label">Password</label>
-          <input type="password" class="form-control login-input" placeholder="••••••"
-                 [(ngModel)]="password" (keyup.enter)="onLogin()" />
-          <button class="btn btn-primary btn-sm" (click)="onLogin()">Login</button>
+        <div class="login-form">
+          <div class="login-field">
+            <i class="fas fa-envelope field-icon"></i>
+            <input type="email" class="form-control login-input" placeholder="Email"
+                   [(ngModel)]="email" (keyup.enter)="onLogin()" autocomplete="username" />
+          </div>
+          <div class="login-field">
+            <i class="fas fa-lock field-icon"></i>
+            <input type="password" class="form-control login-input" placeholder="Password"
+                   [(ngModel)]="password" (keyup.enter)="onLogin()" autocomplete="current-password" />
+          </div>
+          <button class="btn btn-primary btn-sm login-btn" (click)="onLogin()">
+            <i class="fas fa-sign-in-alt"></i> Sign In
+          </button>
         </div>
         @if (loginError) {
-          <span class="login-error ms-2">{{ loginError }}</span>
+          <span class="login-error"><i class="fas fa-exclamation-circle"></i> {{ loginError }}</span>
         }
       } @else {
-        <div class="d-flex align-items-center gap-2">
-          <span class="welcome-text">Welcome, <strong>{{ currentUser.name }}</strong></span>
-          <button class="btn btn-outline-secondary btn-sm" (click)="onLogout()">Logout</button>
+        <div class="user-zone">
+          <div class="user-avatar">{{ currentUser.name.charAt(0).toUpperCase() }}</div>
+          <span class="welcome-text">Hi, <strong>{{ currentUser.name }}</strong></span>
+          <button class="btn btn-outline-secondary btn-sm" (click)="onLogout()">
+            <i class="fas fa-sign-out-alt"></i> Sign out
+          </button>
         </div>
       }
     </div>
@@ -37,32 +48,42 @@
   </div>
 </div>
 
-<!-- Navigation Bar -->
+<!-- Main Navigation Bar -->
 <nav class="main-nav">
-  <div class="container-fluid d-flex align-items-center gap-2 flex-wrap py-1">
+  <div class="nav-inner">
 
     <!-- Nav links -->
-    <ul class="nav-links d-flex align-items-center gap-1 me-3">
-      <li><a routerLink="/home" routerLinkActive="active-link">Home</a></li>
-      <li class="sep">»</li>
-      <li><a routerLink="/products" routerLinkActive="active-link">Products</a></li>
-      <li class="sep">»</li>
-      <li><a routerLink="/account" routerLinkActive="active-link">My Account</a></li>
+    <ul class="nav-links">
+      <li>
+        <a routerLink="/home" routerLinkActive="active-link">
+          <i class="fas fa-home"></i> Home
+        </a>
+      </li>
+      <li>
+        <a routerLink="/products" routerLinkActive="active-link">
+          <i class="fas fa-th-large"></i> Products
+        </a>
+      </li>
+      <li>
+        <a routerLink="/account" routerLinkActive="active-link">
+          <i class="fas fa-user"></i> My Account
+        </a>
+      </li>
     </ul>
 
-    <!-- Spacer -->
-    <div class="flex-grow-1"></div>
-
-    <!-- Search -->
-    <div class="d-flex align-items-center gap-1">
-      <input type="text" class="form-control search-input" placeholder="Search..."
+    <!-- Search bar -->
+    <div class="search-wrap">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" class="form-control search-input"
+             placeholder="Search phones, laptops, gaming..."
              [(ngModel)]="searchQuery" (keyup.enter)="onSearch()" />
-      <button class="btn btn-primary btn-sm" (click)="onSearch()">Search</button>
+      <button class="search-btn" (click)="onSearch()">Search</button>
     </div>
 
     <!-- Cart -->
-    <button class="btn btn-primary btn-sm cart-btn" (click)="openCart()">
-      <i class="fas fa-shopping-cart"></i> Cart
+    <button class="cart-btn" (click)="openCart()">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-label">Cart</span>
       @if (cartCount > 0) {
         <span class="cart-badge">{{ cartCount }}</span>
       }

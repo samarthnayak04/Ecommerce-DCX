@@ -1,28 +1,55 @@
+.account-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
 .login-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 32px;
+  border-radius: var(--radius);
+  padding: 36px;
   color: var(--text);
+  box-shadow: var(--shadow-md);
+
+  h4 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
 }
 
 .welcome-banner {
-  background: linear-gradient(135deg, #337ab7 0%, #2e6da4 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   color: #fff;
-  border-radius: 8px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(79,70,229,0.3);
+
+  h5 { font-weight: 700; }
 }
 
 .nav-tabs {
   border-color: var(--border);
+
   .nav-link {
     color: var(--text-muted);
     border-color: transparent;
-    font-size: 14px;
-    &:hover { color: var(--primary); }
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: var(--radius-xs) var(--radius-xs) 0 0;
+    transition: all 0.15s;
+
+    &:hover {
+      color: var(--primary);
+      background: rgba(79,70,229,0.05);
+    }
+
     &.active {
       color: var(--primary);
       background: var(--card-bg);
       border-color: var(--border) var(--border) var(--card-bg);
+      font-weight: 600;
     }
   }
 }
@@ -30,21 +57,40 @@
 .account-section {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 20px;
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
 }
 
 .section-heading {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text);
   border-bottom: 1px solid var(--border);
-  padding-bottom: 10px;
-  margin-bottom: 16px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.form-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
 }
 
 .table {
   color: var(--text);
-  th { color: var(--text-muted); font-size: 12px; text-transform: uppercase; }
+  th {
+    color: var(--text-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
   td { font-size: 13px; vertical-align: middle; }
+}
+
+.empty-orders {
+  color: var(--text-muted);
+  i { color: var(--border); }
 }

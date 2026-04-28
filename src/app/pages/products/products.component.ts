@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 import { Product } from '../../models/product.model';
@@ -20,18 +21,30 @@ export class ProductsComponent implements OnInit {
   sortBy = 'default';
   searchQuery = '';
 
-  categories = ['All', 'Phones', 'Gaming', 'TVs', 'Laptops'];
+  categories = ['All', 'Phones', 'Gaming', 'TVs', 'Laptops', 'Audio'];
 
-  constructor(private productService: ProductService, private cartService: CartService) {}
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.productService.getAll().subscribe(products => {
       this.allProducts = products;
       this.applyFilters();
     });
+
     this.productService.getSearchQuery().subscribe(q => {
       this.searchQuery = q;
       this.applyFilters();
+    });
+
+    this.route.queryParams.subscribe(params => {
+      if (params['category']) {
+        this.selectedCategory = params['category'];
+        this.applyFilters();
+      }
     });
   }
 
@@ -45,14 +58,14 @@ export class ProductsComponent implements OnInit {
     if (this.searchQuery.trim()) {
       const q = this.searchQuery.toLowerCase();
       result = result.filter(p =>
-        p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)
+        p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || p.description.toLowerCase().includes(q)
       );
     }
 
-    if (this.sortBy === 'price-asc') result.sort((a, b) => a.price - b.price);
+    if (this.sortBy === 'price-asc')  result.sort((a, b) => a.price - b.price);
     else if (this.sortBy === 'price-desc') result.sort((a, b) => b.price - a.price);
-    else if (this.sortBy === 'rating') result.sort((a, b) => b.rating - a.rating);
-    else if (this.sortBy === 'reviews') result.sort((a, b) => b.reviews - a.reviews);
+    else if (this.sortBy === 'rating')    result.sort((a, b) => b.rating - a.rating);
+    else if (this.sortBy === 'reviews')   result.sort((a, b) => b.reviews - a.reviews);
 
     this.filteredProducts = result;
   }

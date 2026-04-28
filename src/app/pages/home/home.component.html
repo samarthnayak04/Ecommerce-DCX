@@ -1,46 +1,131 @@
-<!-- Hero Banner -->
-<div class="hero-banner">
-  <div class="container py-5">
-    <div class="row align-items-center">
-      <div class="col-md-7">
-        <h1 class="hero-title">Welcome to DCX-App Store</h1>
-        <p class="hero-sub">Your one-stop shop for the latest electronics, gadgets, and more. Discover great deals on top brands.</p>
-        <a routerLink="/products" class="btn btn-primary btn-lg me-2">Shop Now</a>
-        <a routerLink="/account" class="btn btn-outline-light btn-lg">My Account</a>
+<!-- ── Hero ─────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <span class="hero-eyebrow">
+        <i class="fas fa-bolt"></i> New arrivals for 2025
+      </span>
+      <h1 class="hero-title">The Best Deals on<br><span class="hero-highlight">Top Electronics</span></h1>
+      <p class="hero-sub">Phones, laptops, gaming, audio — all in one place. Free shipping on orders over $99.</p>
+      <div class="hero-actions">
+        <a routerLink="/products" class="btn btn-primary btn-hero">
+          <i class="fas fa-th-large"></i> Shop All Products
+        </a>
+        <a routerLink="/products" class="btn btn-hero-outline">
+          <i class="fas fa-tags"></i> View Deals
+        </a>
       </div>
-      <div class="col-md-5 text-center">
-        <i class="fas fa-store hero-icon"></i>
+      <div class="hero-stats">
+        <div class="stat"><strong>14+</strong><span>Products</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>5★</strong><span>Avg Rating</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>Free</strong><span>Returns</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-phones">
+        @for (p of heroProducts; track p.id) {
+          <div class="hero-product-card">
+            <img [src]="p.imageLocal ? 'products/' + p.imageLocal : p.image" [alt]="p.name" (error)="onHeroImgError($event)" />
+            <span class="hero-product-name">{{ p.name }}</span>
+            <span class="hero-product-price">${{ p.price | number:'1.0-0' }}</span>
+          </div>
+        }
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Categories -->
-<div class="container my-5">
-  <h4 class="section-title mb-4">Shop by Category</h4>
-  <div class="row g-3">
-    @for (cat of categories; track cat.name) {
-      <div class="col-6 col-md-3">
-        <div class="category-card text-center" (click)="goToProducts()">
-          <i class="category-icon" [class]="cat.icon"></i>
-          <div class="category-name">{{ cat.name }}</div>
+<!-- ── Category strip ─────────────────────────────────────────── -->
+<section class="categories-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">Shop by Category</h2>
+      <a routerLink="/products" class="see-all">See all <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="categories-grid">
+      @for (cat of categories; track cat.name) {
+        <div class="category-tile" (click)="goToCategory(cat.name)">
+          <div class="cat-icon-wrap" [style.background]="cat.bg">
+            <i [class]="cat.icon" [style.color]="cat.color"></i>
+          </div>
+          <span class="cat-label">{{ cat.name }}</span>
+          <span class="cat-count">{{ cat.count }} items</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Brands ─────────────────────────────────────────────────── -->
+<section class="brands-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">Shop by Brand</h2>
+    </div>
+    <div class="brands-strip">
+      @for (brand of brands; track brand.slug) {
+        <div class="brand-tile" (click)="goToBrand(brand.slug)">
+          <div class="brand-logo-wrap">
+            <img [src]="brand.logo" [alt]="brand.name" class="brand-logo"
+                 (error)="onBrandLogoError($event)" />
+          </div>
+          <span class="brand-label">{{ brand.name }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Featured Products ──────────────────────────────────────── -->
+<section class="featured-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">Featured Products</h2>
+      <a routerLink="/products" class="see-all">View all <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="featured-grid">
+      @for (product of featuredProducts; track product.id) {
+        <app-product-card [product]="product" (addToCart)="addToCart($event)" />
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Promo banner ───────────────────────────────────────────── -->
+<section class="promo-strip">
+  <div class="section-inner">
+    <div class="promo-grid">
+      <div class="promo-card promo-shipping">
+        <i class="fas fa-truck promo-icon"></i>
+        <div>
+          <strong>Free Shipping</strong>
+          <span>On all orders over $99</span>
         </div>
       </div>
-    }
-  </div>
-</div>
-
-<!-- Featured Products -->
-<div class="container mb-5">
-  <h4 class="section-title mb-4">Featured Products</h4>
-  <div class="row g-3">
-    @for (product of featuredProducts; track product.id) {
-      <div class="col-md-4">
-        <app-product-card [product]="product" (addToCart)="addToCart($event)" />
+      <div class="promo-card promo-return">
+        <i class="fas fa-undo promo-icon"></i>
+        <div>
+          <strong>30-Day Returns</strong>
+          <span>Hassle-free returns policy</span>
+        </div>
       </div>
-    }
+      <div class="promo-card promo-secure">
+        <i class="fas fa-shield-alt promo-icon"></i>
+        <div>
+          <strong>Secure Payments</strong>
+          <span>256-bit SSL encryption</span>
+        </div>
+      </div>
+      <div class="promo-card promo-support">
+        <i class="fas fa-headset promo-icon"></i>
+        <div>
+          <strong>24/7 Support</strong>
+          <span>We're here whenever you need us</span>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="text-center mt-4">
-    <a routerLink="/products" class="btn btn-outline-primary">View All Products</a>
-  </div>
-</div>
+</section>

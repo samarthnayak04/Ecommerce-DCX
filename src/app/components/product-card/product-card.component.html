@@ -1,28 +1,51 @@
 <div class="product-card">
+  <!-- Badge -->
+  @if (product.badge) {
+    <span class="product-badge" [ngClass]="'badge-' + product.badge.toLowerCase()">
+      {{ product.badge }}
+    </span>
+  }
+
+  <!-- Brand logo -->
+  @if (product.brand) {
+    <div class="product-brand-logo">
+      <img [src]="'brands/' + product.brand + '.png'" [alt]="product.brand"
+           (error)="onBrandLogoError($event)" />
+    </div>
+  }
+
+  <!-- Image -->
   <div class="product-img-wrap">
-    <img [src]="product.image" [alt]="product.name" class="product-img"
-         (error)="onImageError($event)" />
+    <img [src]="product.imageLocal ? 'products/' + product.imageLocal : product.image" [alt]="product.name" class="product-img"
+         (error)="onImageError($event)" loading="lazy" />
   </div>
 
+  <!-- Info -->
   <div class="product-info">
-    <div class="d-flex justify-content-between align-items-start">
-      <h6 class="product-name">{{ product.name }}</h6>
-      <span class="product-price">${{ product.price | number:'1.2-2' }}</span>
-    </div>
-
+    <span class="product-category">{{ product.category }}</span>
+    <h6 class="product-name">{{ product.name }}</h6>
+    @if (product.model) {
+      <div class="product-model">{{ product.model }}</div>
+    }
     <p class="product-desc">{{ product.description }}</p>
 
-    <div class="d-flex align-items-center justify-content-between">
-      <div class="stars-wrap">
-        @for (star of stars; track $index) {
-          <i class="fa-star" [class.fas]="$index < product.rating" [class.far]="$index >= product.rating"></i>
-        }
-        <span class="review-count">{{ product.reviews }} Reviews</span>
-      </div>
+    <div class="product-rating">
+      @for (star of stars; track $index) {
+        <i class="fa-star" [class.fas]="$index < product.rating" [class.far]="$index >= product.rating"></i>
+      }
+      <span class="review-count">({{ product.reviews }})</span>
     </div>
 
-    <button class="btn btn-primary btn-sm add-btn mt-2" (click)="onAddToCart()">
-      Add to Cart
-    </button>
+    <div class="product-footer">
+      <div class="price-wrap">
+        <span class="product-price">${{ product.price | number:'1.2-2' }}</span>
+        @if (product.originalPrice) {
+          <span class="original-price">${{ product.originalPrice | number:'1.2-2' }}</span>
+        }
+      </div>
+      <button class="add-btn" (click)="onAddToCart()">
+        <i class="fas fa-cart-plus"></i> Add
+      </button>
+    </div>
   </div>
 </div>

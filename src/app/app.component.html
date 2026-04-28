@@ -5,11 +5,48 @@
   <router-outlet></router-outlet>
 </main>
 
-<footer class="text-center py-3 mt-auto">
-  <small>MyStore Copyright &copy; 2015 &nbsp;&middot;&nbsp;
-    <a href="#">Terms</a> &nbsp;&middot;&nbsp;
-    <a href="#">Privacy</a>
-  </small>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <i class="fas fa-bolt"></i>
+      </div>
+      <div>
+        <div class="footer-brand-name">DCX Store</div>
+        <div class="footer-brand-sub">Your tech destination</div>
+      </div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <span class="footer-col-title">Shop</span>
+        <a routerLink="/products">All Products</a>
+        <a routerLink="/products">Phones</a>
+        <a routerLink="/products">Laptops</a>
+        <a routerLink="/products">Gaming</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">Account</span>
+        <a routerLink="/account">My Account</a>
+        <a routerLink="/account">Orders</a>
+        <a routerLink="/account">Wishlist</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">Info</span>
+        <a href="#">About Us</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; {{ currentYear }} DCX Store. All rights reserved.</span>
+    <div class="footer-badges">
+      <i class="fab fa-cc-visa"></i>
+      <i class="fab fa-cc-mastercard"></i>
+      <i class="fab fa-cc-paypal"></i>
+      <i class="fab fa-cc-apple-pay"></i>
+    </div>
+  </div>
 </footer>
 
 <app-cart></app-cart>
