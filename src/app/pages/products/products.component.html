@@ -22,25 +22,21 @@
 
   <div class="products-body">
 
-    <!-- Sidebar filters -->
-    <aside class="sidebar">
-      <div class="filter-card">
-        <h6 class="filter-heading">
-          <i class="fas fa-sliders-h"></i> Categories
-        </h6>
-        <div class="filter-list">
-          @for (cat of categories; track cat) {
-            <button class="filter-item" [class.active]="selectedCategory === cat"
-                    (click)="filterByCategory(cat)">
-              <span>{{ cat }}</span>
-              @if (selectedCategory === cat) {
-                <i class="fas fa-check"></i>
-              }
-            </button>
-          }
-        </div>
+    <!-- Category filters -->
+    <div class="category-filters mb-4">
+      <h6 class="filter-title mb-3"><i class="fas fa-filter me-2"></i>Filter by Category</h6>
+      <div class="category-buttons">
+        @for (cat of categories; track cat) {
+          <button class="category-btn" [class.active]="selectedCategory === cat"
+                  (click)="filterByCategory(cat)">
+            {{ cat }}
+            @if (selectedCategory === cat && cat !== 'All') {
+              <i class="fas fa-times ms-1"></i>
+            }
+          </button>
+        }
       </div>
-    </aside>
+    </div>
 
     <!-- Product grid -->
     <div class="grid-area">
@@ -48,8 +44,8 @@
         <div class="no-results">
           <i class="fas fa-search-minus"></i>
           <h5>No products found</h5>
-          <p>Try a different search term or category.</p>
-          <button class="btn btn-outline-primary btn-sm" (click)="filterByCategory('All')">Clear filters</button>
+          <p>Try a different category or search term.</p>
+          <button class="btn btn-outline-primary btn-sm" (click)="filterByCategory('All')">Show All Products</button>
         </div>
       } @else {
         <div class="product-grid">

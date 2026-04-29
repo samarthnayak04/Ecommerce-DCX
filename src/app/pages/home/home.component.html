@@ -7,13 +7,10 @@
         <i class="fas fa-bolt"></i> New arrivals for 2025
       </span>
       <h1 class="hero-title">The Best Deals on<br><span class="hero-highlight">Top Electronics</span></h1>
-      <p class="hero-sub">Phones, laptops, gaming, audio — all in one place. Free shipping on orders over $99.</p>
+      <p class="hero-sub">Phones, laptops, gaming, audio — all in one place. Free shipping on orders over ₹99.</p>
       <div class="hero-actions">
         <a routerLink="/products" class="btn btn-primary btn-hero">
           <i class="fas fa-th-large"></i> Shop All Products
-        </a>
-        <a routerLink="/products" class="btn btn-hero-outline">
-          <i class="fas fa-tags"></i> View Deals
         </a>
       </div>
       <div class="hero-stats">
@@ -38,47 +35,6 @@
   </div>
 </section>
 
-<!-- ── Category strip ─────────────────────────────────────────── -->
-<section class="categories-section">
-  <div class="section-inner">
-    <div class="section-header">
-      <h2 class="section-title">Shop by Category</h2>
-      <a routerLink="/products" class="see-all">See all <i class="fas fa-arrow-right"></i></a>
-    </div>
-    <div class="categories-grid">
-      @for (cat of categories; track cat.name) {
-        <div class="category-tile" (click)="goToCategory(cat.name)">
-          <div class="cat-icon-wrap" [style.background]="cat.bg">
-            <i [class]="cat.icon" [style.color]="cat.color"></i>
-          </div>
-          <span class="cat-label">{{ cat.name }}</span>
-          <span class="cat-count">{{ cat.count }} items</span>
-        </div>
-      }
-    </div>
-  </div>
-</section>
-
-<!-- ── Brands ─────────────────────────────────────────────────── -->
-<section class="brands-section">
-  <div class="section-inner">
-    <div class="section-header">
-      <h2 class="section-title">Shop by Brand</h2>
-    </div>
-    <div class="brands-strip">
-      @for (brand of brands; track brand.slug) {
-        <div class="brand-tile" (click)="goToBrand(brand.slug)">
-          <div class="brand-logo-wrap">
-            <img [src]="brand.logo" [alt]="brand.name" class="brand-logo"
-                 (error)="onBrandLogoError($event)" />
-          </div>
-          <span class="brand-label">{{ brand.name }}</span>
-        </div>
-      }
-    </div>
-  </div>
-</section>
-
 <!-- ── Featured Products ──────────────────────────────────────── -->
 <section class="featured-section">
   <div class="section-inner">
@@ -94,38 +50,3 @@
   </div>
 </section>
 
-<!-- ── Promo banner ───────────────────────────────────────────── -->
-<section class="promo-strip">
-  <div class="section-inner">
-    <div class="promo-grid">
-      <div class="promo-card promo-shipping">
-        <i class="fas fa-truck promo-icon"></i>
-        <div>
-          <strong>Free Shipping</strong>
-          <span>On all orders over $99</span>
-        </div>
-      </div>
-      <div class="promo-card promo-return">
-        <i class="fas fa-undo promo-icon"></i>
-        <div>
-          <strong>30-Day Returns</strong>
-          <span>Hassle-free returns policy</span>
-        </div>
-      </div>
-      <div class="promo-card promo-secure">
-        <i class="fas fa-shield-alt promo-icon"></i>
-        <div>
-          <strong>Secure Payments</strong>
-          <span>256-bit SSL encryption</span>
-        </div>
-      </div>
-      <div class="promo-card promo-support">
-        <i class="fas fa-headset promo-icon"></i>
-        <div>
-          <strong>24/7 Support</strong>
-          <span>We're here whenever you need us</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>

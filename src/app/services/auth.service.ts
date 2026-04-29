@@ -4,6 +4,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export interface User {
   email: string;
   name: string;
+  firstName: string;
+  lastName: string;
+  phone?: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  pincode?: string;
+  dateOfBirth?: string;
+  gender?: string;
+  joinDate: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -27,7 +37,23 @@ export class AuthService {
 
   login(email: string, password: string): boolean {
     if (email && password.length >= 4) {
-      this.user$.next({ email, name: email.split('@')[0] });
+      const firstName = email.split('@')[0].split('.')[0] || 'John';
+      const lastName = email.split('@')[0].split('.')[1] || 'Doe';
+
+      this.user$.next({
+        email,
+        name: `${firstName} ${lastName}`,
+        firstName: firstName.charAt(0).toUpperCase() + firstName.slice(1),
+        lastName: lastName.charAt(0).toUpperCase() + lastName.slice(1),
+        phone: '+91 98765 43210',
+        address: '123 Main Street, Tech City',
+        city: 'Mumbai',
+        state: 'Maharashtra',
+        pincode: '400001',
+        dateOfBirth: '1990-05-15',
+        gender: 'Male',
+        joinDate: new Date().toISOString().split('T')[0]
+      });
       this.loginError$.next('');
       return true;
     }
