@@ -67,10 +67,40 @@ export class ProductService {
       badge: 'Sale',
       brand: 'oneplus'
     },
+    {
+      id: 5,
+      name: 'iPhone 15 Pro Max',
+      model: '15 Pro Max',
+      price: 94917.00,
+      description: 'The largest Pro camera system upgrade ever. Super Retina XDR display with ProMotion. Titanium design.',
+      image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=400&q=80',
+      imageLocal: 'iphone-15-pro-max.png',
+      rating: 5,
+      reviews: 156,
+      category: 'Phones',
+      badge: 'New',
+      brand: 'apple'
+    },
+    {
+  id: 6, // Incrementing ID based on your list
+  name: 'iPhone Air',
+  model: 'Air',
+  price: 99900.00,
+  description: 'Thinner. Lighter. Faster. The breakthrough 5.6mm titanium design meets the power of the A19 Pro chip.',
+  image: 'https://unsplash.com', // Representative thin profile image
+  imageLocal: 'iphone-air.png',
+  rating: 5,
+  reviews: 142,
+  category: 'Phones',
+  brand: 'apple'
+}
+
+    
+    ,
 
     // ── Gaming ─────────────────────────────────────────
     {
-      id: 5,
+      id: 13,
       name: 'PlayStation 5',
       model: 'PS5',
       price: 41417.00,
@@ -84,7 +114,7 @@ export class ProductService {
       brand: 'sony'
     },
     {
-      id: 6,
+      id: 14,
       name: 'Xbox Series X',
       model: 'Series X',
       price: 41417.00,
@@ -99,7 +129,7 @@ export class ProductService {
 
     // ── TVs ────────────────────────────────────────────
     {
-      id: 8,
+      id: 15,
       name: 'Samsung 65" Neo QLED 4K',
       model: 'Neo QLED 65',
       price: 107817.00,
@@ -116,7 +146,7 @@ export class ProductService {
 
     // ── Laptops ────────────────────────────────────────
     {
-      id: 10,
+      id: 16,
       name: 'MacBook Pro 16" M3 Pro',
       model: 'M3 Pro',
       price: 207417.00,
@@ -130,7 +160,7 @@ export class ProductService {
       brand: 'apple'
     },
     {
-      id: 12,
+      id: 17,
       name: 'ASUS ROG Zephyrus G14',
       model: 'G14',
       price: 116117.00,
@@ -147,7 +177,7 @@ export class ProductService {
 
     // ── Audio ──────────────────────────────────────────
     {
-      id: 13,
+      id: 18,
       name: 'Apple AirPods Pro 2',
       model: 'AirPods Pro 2',
       price: 20667.00,
@@ -161,7 +191,7 @@ export class ProductService {
       brand: 'apple'
     },
     {
-      id: 14,
+      id: 19,
       name: 'Sony WH-1000XM5',
       model: 'WH-1000XM5',
       price: 28967.00,

@@ -131,9 +131,9 @@
                 @for (item of cartItems; track item.product.id) {
                   <tr>
                     <td>{{ item.product.name }}</td>
-                    <td>${{ item.product.price | number:'1.2-2' }}</td>
+                    <td>₹{{ item.product.price | number:'1.2-2' }}</td>
                     <td>{{ item.quantity }}</td>
-                    <td>${{ (item.product.price * item.quantity) | number:'1.2-2' }}</td>
+                    <td>₹{{ (item.product.price * item.quantity) | number:'1.2-2' }}</td>
                   </tr>
                 }
               </tbody>

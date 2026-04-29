@@ -30,7 +30,7 @@
           <div class="hero-product-card">
             <img [src]="p.imageLocal ? 'products/' + p.imageLocal : p.image" [alt]="p.name" (error)="onHeroImgError($event)" />
             <span class="hero-product-name">{{ p.name }}</span>
-            <span class="hero-product-price">${{ p.price | number:'1.0-0' }}</span>
+            <span class="hero-product-price">₹{{ p.price | number:'1.0-0' }}</span>
           </div>
         }
       </div>
