@@ -8,6 +8,7 @@ export interface User {
   lastName: string;
   phone?: string;
   address?: string;
+  address2?: string;
   city?: string;
   state?: string;
   pincode?: string;

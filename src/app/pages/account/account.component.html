@@ -68,55 +68,88 @@
 
     <!-- Tab Content -->
     @if (activeTab === 'profile') {
-      <div class="account-section">
+
+      <!-- Personal Information -->
+      <div class="account-section mb-4">
         <h6 class="section-heading">Personal Information</h6>
+
+        @if (profileSaved) {
+          <div class="alert alert-success py-2 small mb-3">
+            <i class="fas fa-check-circle me-1"></i>Profile updated successfully.
+          </div>
+        }
+
         <div class="row g-3">
-          <div class="col-md-6">
-            <label class="form-label">First Name</label>
-            <input type="text" class="form-control" [value]="currentUser.firstName" readonly />
+          <div class="col-12">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" [(ngModel)]="editForm.name" />
           </div>
-          <div class="col-md-6">
-            <label class="form-label">Last Name</label>
-            <input type="text" class="form-control" [value]="currentUser.lastName" readonly />
+
+          <div class="col-12">
+            <label class="form-label">Email address</label>
+            <input type="email" class="form-control" [(ngModel)]="editForm.email" />
+            <div class="form-text">We'll never share your email with anyone else.</div>
           </div>
-          <div class="col-md-8">
-            <label class="form-label">Email</label>
-            <input type="email" class="form-control" [value]="currentUser.email" readonly />
+
+          <div class="col-12">
+            <label class="form-label">Mobile Number</label>
+            <input type="tel" class="form-control" [(ngModel)]="editForm.mobile" placeholder="Enter mobile number" />
           </div>
-          <div class="col-md-4">
-            <label class="form-label">Phone</label>
-            <input type="text" class="form-control" [value]="currentUser.phone" readonly />
-          </div>
+
           <div class="col-12">
             <label class="form-label">Address</label>
-            <input type="text" class="form-control" [value]="currentUser.address" readonly />
+            <input type="text" class="form-control" [(ngModel)]="editForm.address" placeholder="1234 Main St" />
           </div>
-          <div class="col-md-4">
+
+          <div class="col-12">
+            <label class="form-label">Address 2</label>
+            <input type="text" class="form-control" [(ngModel)]="editForm.address2" placeholder="Apartment, studio, or floor" />
+          </div>
+
+          <div class="col-md-5">
             <label class="form-label">City</label>
-            <input type="text" class="form-control" [value]="currentUser.city" readonly />
+            <input type="text" class="form-control" [(ngModel)]="editForm.city" placeholder="City" />
           </div>
+
           <div class="col-md-4">
             <label class="form-label">State</label>
-            <input type="text" class="form-control" [value]="currentUser.state" readonly />
+            <select class="form-select" [(ngModel)]="editForm.state">
+              <option value="">--select--</option>
+              @for (s of states; track s) {
+                <option [value]="s">{{ s }}</option>
+              }
+            </select>
           </div>
-          <div class="col-md-4">
-            <label class="form-label">Pincode</label>
-            <input type="text" class="form-control" [value]="currentUser.pincode" readonly />
+
+          <div class="col-md-3">
+            <label class="form-label">Zip / Pincode</label>
+            <input type="text" class="form-control" [(ngModel)]="editForm.zip" placeholder="400001" />
           </div>
-          <div class="col-md-6">
-            <label class="form-label">Date of Birth</label>
-            <input type="date" class="form-control" [value]="currentUser.dateOfBirth" readonly />
-          </div>
-          <div class="col-md-6">
-            <label class="form-label">Gender</label>
-            <input type="text" class="form-control" [value]="currentUser.gender" readonly />
-          </div>
-          <div class="col-12">
-            <label class="form-label">Member Since</label>
-            <input type="text" class="form-control" [value]="currentUser.joinDate | date:'mediumDate'" readonly />
+
+          <div class="col-12 d-flex justify-content-end">
+            <button class="btn btn-primary px-4" (click)="saveProfile()">Save</button>
           </div>
         </div>
       </div>
+
+      <!-- FAQs -->
+      <div class="account-section">
+        <h6 class="section-heading">FAQs</h6>
+        <div class="faq-list">
+          @for (faq of faqs; track faq.question; let i = $index) {
+            <div class="faq-item" [class.open]="faq.open">
+              <button class="faq-question" (click)="toggleFaq(i)">
+                {{ faq.question }}
+                <i class="fas" [class.fa-chevron-down]="!faq.open" [class.fa-chevron-up]="faq.open"></i>
+              </button>
+              @if (faq.open) {
+                <div class="faq-answer">{{ faq.answer }}</div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
     }
 
     @if (activeTab === 'orders') {

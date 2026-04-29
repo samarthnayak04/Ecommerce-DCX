@@ -16,6 +16,7 @@ import { ProductCardComponent } from '../../components/product-card/product-card
 export class HomeComponent implements OnInit {
   featuredProducts: Product[] = [];
   heroProducts: Product[] = [];
+  activePhoneIndex = 0;
 
   brands = [
     { name: 'Apple',     slug: 'apple',     logo: 'brands/apple.png' },
@@ -60,6 +61,10 @@ export class HomeComponent implements OnInit {
   goToBrand(slug: string): void {
     this.productService.setSearchQuery(slug);
     this.router.navigate(['/products']);
+  }
+
+  setActivePhone(index: number): void {
+    this.activePhoneIndex = index;
   }
 
   onHeroImgError(event: Event): void {

@@ -22,14 +22,23 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-phones">
-        @for (p of heroProducts; track p.id) {
-          <div class="hero-product-card">
-            <img [src]="p.imageLocal ? 'products/' + p.imageLocal : p.image" [alt]="p.name" (error)="onHeroImgError($event)" />
-            <span class="hero-product-name">{{ p.name }}</span>
-            <span class="hero-product-price">₹{{ p.price | number:'1.0-0' }}</span>
-          </div>
-        }
+      <div class="hero-carousel">
+        <div class="hero-phone-display">
+          @if (heroProducts.length > 0) {
+            <div class="hero-product-card">
+              <img [src]="heroProducts[activePhoneIndex].imageLocal ? 'products/' + heroProducts[activePhoneIndex].imageLocal : heroProducts[activePhoneIndex].image"
+                   [alt]="heroProducts[activePhoneIndex].name"
+                   (error)="onHeroImgError($event)" />
+              <span class="hero-product-name">{{ heroProducts[activePhoneIndex].name }}</span>
+              <span class="hero-product-price">₹{{ heroProducts[activePhoneIndex].price | number:'1.0-0' }}</span>
+            </div>
+          }
+        </div>
+        <div class="carousel-dots">
+          @for (p of heroProducts; track p.id; let i = $index) {
+            <button class="carousel-dot" [class.active]="i === activePhoneIndex" (click)="setActivePhone(i)" [attr.aria-label]="p.name"></button>
+          }
+        </div>
       </div>
     </div>
   </div>
