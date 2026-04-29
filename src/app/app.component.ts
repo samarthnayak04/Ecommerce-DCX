@@ -13,4 +13,9 @@ import { CartComponent } from './components/cart/cart.component';
 })
 export class AppComponent {
   currentYear = new Date().getFullYear();
+
+  scrollToTop(event: Event): void {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

@@ -13,38 +13,89 @@
       </div>
       <div>
         <div class="footer-brand-name">DCX Store</div>
-        <div class="footer-brand-sub">Your tech destination</div>
+        <div class="footer-brand-sub">Your premium tech destination</div>
+        <div class="footer-description">
+          Discover the latest in technology with unbeatable prices and exceptional service.
+        </div>
       </div>
     </div>
+
     <div class="footer-links">
       <div class="footer-col">
         <span class="footer-col-title">Shop</span>
-        <a routerLink="/products">All Products</a>
-        <a routerLink="/products">Phones</a>
-        <a routerLink="/products">Laptops</a>
-        <a routerLink="/products">Gaming</a>
+        <a routerLink="/products" [queryParams]="{category: 'Phones'}">Phones</a>
+        <a routerLink="/products" [queryParams]="{category: 'Laptops'}">Laptops</a>
+        <a routerLink="/products" [queryParams]="{category: 'Gaming'}">Gaming</a>
+        <a routerLink="/products" [queryParams]="{category: 'TVs'}">TVs</a>
+        <a routerLink="/products" [queryParams]="{category: 'Audio'}">Audio</a>
       </div>
+
       <div class="footer-col">
         <span class="footer-col-title">Account</span>
         <a routerLink="/account">My Account</a>
-        <a routerLink="/account">Orders</a>
+        <a routerLink="/account">Order History</a>
         <a routerLink="/account">Wishlist</a>
+        <a routerLink="/account">Track Order</a>
       </div>
+
       <div class="footer-col">
-        <span class="footer-col-title">Info</span>
-        <a href="#">About Us</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Privacy Policy</a>
+        <span class="footer-col-title">Support</span>
+        <a href="mailto:support@dcxstore.com">Contact Us</a>
+        <a href="#" (click)="scrollToTop($event)">Help Center</a>
+        <a href="#" (click)="scrollToTop($event)">Shipping Info</a>
+        <a href="#" (click)="scrollToTop($event)">Returns</a>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Company</span>
+        <a href="#" (click)="scrollToTop($event)">About Us</a>
+        <a href="#" (click)="scrollToTop($event)">Careers</a>
+        <a href="#" (click)="scrollToTop($event)">Press</a>
+        <a href="#" (click)="scrollToTop($event)">Blog</a>
+      </div>
+    </div>
+
+    <div class="footer-newsletter">
+      <span class="footer-col-title">Stay Updated</span>
+      <p class="newsletter-text">Get the latest deals and product updates</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Enter your email" class="newsletter-input">
+        <button class="newsletter-btn">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-link" title="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="social-link" title="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="social-link" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="social-link" title="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
       </div>
     </div>
   </div>
+
   <div class="footer-bottom">
     <span>&copy; {{ currentYear }} DCX Store. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="#" (click)="scrollToTop($event)">Privacy Policy</a>
+      <span class="footer-sep">•</span>
+      <a href="#" (click)="scrollToTop($event)">Terms of Service</a>
+      <span class="footer-sep">•</span>
+      <a href="#" (click)="scrollToTop($event)">Cookie Policy</a>
+    </div>
     <div class="footer-badges">
-      <i class="fab fa-cc-visa"></i>
-      <i class="fab fa-cc-mastercard"></i>
-      <i class="fab fa-cc-paypal"></i>
-      <i class="fab fa-cc-apple-pay"></i>
+      <i class="fab fa-cc-visa" title="Visa"></i>
+      <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+      <i class="fab fa-cc-paypal" title="PayPal"></i>
+      <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
+      <i class="fab fa-google-pay" title="Google Pay"></i>
     </div>
   </div>
 </footer>

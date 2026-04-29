@@ -33,17 +33,24 @@ body.dark-theme {
   --primary: #6366F1;
   --primary-light: #818CF8;
   --primary-dark: #4F46E5;
-  --bg: #0F172A;
-  --bg-secondary: #1E293B;
-  --text: #F1F5F9;
-  --text-muted: #94A3B8;
-  --border: #334155;
-  --card-bg: #1E293B;
-  --navbar-bg: #1E293B;
-  --toolbar-bg: #020617;
-  --footer-bg: #020617;
-  --input-bg: #1E293B;
-  --input-border: #475569;
+  --accent: #FBBF24;
+  --accent-dark: #F59E0B;
+
+  --bg: #0A0A0A;
+  --bg-secondary: #1A1A1A;
+  --text: #F8FAFC;
+  --text-muted: #A1A1AA;
+  --border: #374151;
+  --card-bg: #1A1A1A;
+  --navbar-bg: #0A0A0A;
+  --toolbar-bg: #000000;
+  --footer-bg: #0A0A0A;
+  --input-bg: #1A1A1A;
+  --input-border: #4B5563;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.2);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.3);
 }
 
 body.grayscale { filter: grayscale(100%); }
